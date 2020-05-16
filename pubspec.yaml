@@ -30,8 +30,6 @@ flutter:
       android:
         package: com.souvikbiswas.flutter_wear
         pluginClass: FlutterWearPlugin
-      # ios:
-      #   pluginClass: FlutterWearPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
