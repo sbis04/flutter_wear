@@ -11,18 +11,18 @@ typedef Widget WearShapeBuilder(
 
 class WearShape extends StatefulWidget {
   /// This callback should contain two parameters:
-  /// 
+  ///
   /// * [BuildContext] context
   /// * [Shape] shape
   final WearShapeBuilder builder;
 
-  /// Helps in retrieving the shape of the wear device. 
-  /// 
+  /// Helps in retrieving the shape of the wear device.
+  ///
   /// It has a required parameter [builder], which is of
   /// type [WearShapeBuilder].
-  /// 
+  ///
   /// The builder callback should contain two parameters:
-  /// 
+  ///
   /// * [BuildContext] context
   /// * [Shape] shape
   WearShape({
