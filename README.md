@@ -7,6 +7,8 @@ This is a Flutter plugin for **WearOS** devices.
 * Helps in getting the **shape** (square or round) of the watch face
 * Handles the mode changes, **Active Mode** and **Ambient Mode**
 
+More features will be arriving soon.
+
 <h4 align="center">EXAMPLE APP</h4>
 
 <p align="center">
