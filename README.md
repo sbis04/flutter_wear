@@ -96,11 +96,18 @@ More features will be arriving soon.
 
   import android.os.Bundle
 
+  // Do not import this package: 
+  // io.flutter.embedding.android.FlutterActivity
+
+  // Make sure that you import the exact same packages here
   import io.flutter.app.FlutterActivity
   import io.flutter.plugins.GeneratedPluginRegistrant
   
   import androidx.wear.ambient.AmbientMode
   
+  // Here, replace the app id with yours or, 
+  // just open the android folder using Android Studio & 
+  // import the following two packages
   import com.souvikbiswas.flutter_wear.FlutterAmbientCallback
   import com.souvikbiswas.flutter_wear.getChannel
   
