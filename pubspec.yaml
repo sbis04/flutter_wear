@@ -1,5 +1,5 @@
 name: flutter_wear
-description: A new flutter plugin project.
+description: This is a  Flutter plugin for WearOS devices. It helps in retrieving the shape of the watch face and handles the mode changes of the wear device.
 version: 0.1.0
 homepage: https://github.com/sbis04/flutter_wear.git
 
