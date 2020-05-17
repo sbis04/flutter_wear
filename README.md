@@ -46,29 +46,76 @@ More features will be arriving soon.
   
   <!-- Flags the app as a Wear app -->
   <uses-feature android:name="android.hardware.type.watch" />
-  
-  <!-- Flags that the app doesn't require a companion phone app -->
-  <application>
-  <meta-data
-      android:name="com.google.android.wearable.standalone"
-      android:value="true" />
-  </application>
   ```
+
+* Inside the same file, update the contents of the `application` tag like this:
+  ```xml
+  <!-- KEEP THE application tag ATTRIBUTES AS IT IS -->
+  <application
+        android:name="io.flutter.app.FlutterApplication"
+        android:label="wear_demo"
+        android:icon="@mipmap/ic_launcher">
+
+        <!-- REPLACE THE PART STARTING FROM BELOW -->
+        <!-- Flags that the app doesn't require a companion phone app -->
+        <meta-data
+        android:name="com.google.android.wearable.standalone"
+        android:value="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <meta-data
+              android:name="io.flutter.app.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+
+            <meta-data
+              android:name="io.flutter.app.android.SplashScreenDrawable"
+              android:resource="@drawable/launch_background"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- TILL THE ABOVE LINE -->
+    </application>
+  ```
+
 
 * Go to `<project root>/android/app/src/main/kotlin/<app_id>/MainActivity.kt` and update the `MainActivity` code as following:
   ```kotlin
+  // Except the package name
+  // Replace everything
+
+  import android.os.Bundle
+
+  import io.flutter.app.FlutterActivity
+  import io.flutter.plugins.GeneratedPluginRegistrant
+  
+  import androidx.wear.ambient.AmbientMode
+  
+  import com.souvikbiswas.flutter_wear.FlutterAmbientCallback
+  import com.souvikbiswas.flutter_wear.getChannel
+  
   class MainActivity: FlutterActivity(), AmbientMode.AmbientCallbackProvider {
-    override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
-      GeneratedPluginRegistrant.registerWith(this)
+      override fun onCreate(savedInstanceState: Bundle?) {
+          super.onCreate(savedInstanceState)
+          GeneratedPluginRegistrant.registerWith(this)
   
-      // Wire up the activity for ambient callbacks
-      AmbientMode.attachAmbientSupport(this)
-    }
+          // Wire up the activity for ambient callbacks
+          AmbientMode.attachAmbientSupport(this)
+      }
   
-    override fun getAmbientCallback(): AmbientMode.AmbientCallback {
-      return FlutterAmbientCallback(getChannel(flutterView))
-    }
+      override fun getAmbientCallback(): AmbientMode.AmbientCallback {
+          return FlutterAmbientCallback(getChannel(flutterView))
+      }
   }
   ```
 
