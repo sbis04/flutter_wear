@@ -3,15 +3,28 @@ import 'package:flutter/services.dart';
 import 'package:flutter_wear/flutter_wear.dart';
 import 'package:flutter_wear/shape.dart';
 
-/// Builds a child for a WatchFaceBuilder
+// Builds a child for a WatchFaceBuilder
 typedef Widget WearShapeBuilder(
   BuildContext context,
   Shape shape,
 );
 
 class WearShape extends StatefulWidget {
+  /// This callback should contain two parameters:
+  /// 
+  /// * [BuildContext] context
+  /// * [Shape] shape
   final WearShapeBuilder builder;
 
+  /// Helps in retrieving the shape of the wear device. 
+  /// 
+  /// It has a required parameter [builder], which is of
+  /// type [WearShapeBuilder].
+  /// 
+  /// The builder callback should contain two parameters:
+  /// 
+  /// * [BuildContext] context
+  /// * [Shape] shape
   WearShape({
     @required this.builder,
     Key key,
@@ -29,8 +42,8 @@ class _WearShapeState extends State<WearShape> {
   initState() {
     super.initState();
 
-    /// Initialize shape of the WearOS device
-    /// to be round
+    // Initialize shape of the WearOS device
+    // to be round
     shape = Shape.round;
     _setShape();
   }
@@ -40,7 +53,7 @@ class _WearShapeState extends State<WearShape> {
     setState(() => shape);
   }
 
-  /// Fetches the shape of the watch device
+  // Fetches the shape of the watch device
   Future<Shape> _retrieveShape() async {
     try {
       final int result =
