@@ -10,7 +10,7 @@ This is a Flutter plugin for **WearOS** devices.
 <h4 align="center">EXAMPLE APP</h4>
 
 <p align="center">
-  <img src="https://github.com/sbis04/flutter_wear/raw/master/example/screenshots/wear_example.png" alt="Flutter Wear"/>
+  <img src="https://github.com/sbis04/flutter_wear/raw/master/screenshots/wear_example.png" alt="Flutter Wear"/>
 </p>
 
 ## Getting Started
