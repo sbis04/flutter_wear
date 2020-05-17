@@ -13,13 +13,57 @@ This is a Flutter plugin for **WearOS** devices.
   <img src="https://github.com/sbis04/flutter_wear/raw/master/screenshots/wear_example.png" alt="Flutter Wear"/>
 </p>
 
-## Getting Started
+## Usage
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+* Go to `<project root>/android/app/build.gradle` and set the `minSdkVersion` to **23**:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+   ```gradle
+   minSdkVersion 23
+   ```
+
+* Also add the following dependencies to the same file:
+  ```gradle
+  dependencies {
+    // Wear dependencies
+    implementation 'com.android.support:wear:27.1.1'
+    implementation 'com.google.android.support:wearable:2.3.0'
+    compileOnly 'com.google.android.wearable:wearable:2.3.0'
+  }
+  ```
+
+* Go to `<project root>/android/app/src/main/AndroidManifest.xml` and add the following inside the `manifest` tag:
+  ```xml
+  <!-- Required for ambient mode support -->
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  
+  <!-- Flags the app as a Wear app -->
+  <uses-feature android:name="android.hardware.type.watch" />
+  
+  <!-- Flags that the app doesn't require a companion phone app -->
+  <application>
+  <meta-data
+      android:name="com.google.android.wearable.standalone"
+      android:value="true" />
+  </application>
+  ```
+
+* Go to `<project root>/android/app/src/main/kotlin/<app_id>/MainActivity.kt` and update the `MainActivity` code as following:
+  ```kotlin
+  class MainActivity: FlutterActivity(), AmbientMode.AmbientCallbackProvider {
+    override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      GeneratedPluginRegistrant.registerWith(this)
+  
+      // Wire up the activity for ambient callbacks
+      AmbientMode.attachAmbientSupport(this)
+    }
+  
+    override fun getAmbientCallback(): AmbientMode.AmbientCallback {
+      return FlutterAmbientCallback(getChannel(flutterView))
+    }
+  }
+  ```
+
+## Widgets
+
+
