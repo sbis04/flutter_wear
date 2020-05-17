@@ -13,6 +13,8 @@ This is a Flutter plugin for **WearOS** devices.
   <img src="https://github.com/sbis04/flutter_wear/raw/master/screenshots/wear_example.png" alt="Flutter Wear"/>
 </p>
 
+> ***NOTE:*** The project is not using *Fluter Embedding v2*
+
 ## Usage
 
 * Go to `<project root>/android/app/build.gradle` and set the `minSdkVersion` to **23**:
