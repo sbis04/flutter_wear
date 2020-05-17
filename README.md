@@ -1,6 +1,11 @@
-# flutter_wear
+# Flutter Wear
 
-A new flutter plugin project.
+This is a Flutter plugin for **WearOS** devices. 
+
+## Features
+
+* Helps in getting the **shape** (square or round) of the watch face
+* Handles the mode changes, **Active Mode** and **Ambient Mode**.
 
 ## Getting Started
 
