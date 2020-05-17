@@ -72,7 +72,9 @@ This is a Flutter plugin for **WearOS** devices.
 
 There are three primary widgets:
 
-
+* **WearShape**: Determines the *shape* of the watch face, whether it is square or round.
+* **WearMode**: Determines the *current mode* of the watch (*Active Mode* or *Ambient Mode*). The widgets inside it rebuilds whenever the mode changes.
+* **WearInheritedShape**: It can be used for passing the shape of the watch down the widget tree.
 
 ## Example
 
